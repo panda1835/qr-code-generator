@@ -17,7 +17,7 @@ const siteUrl = "https://qrcode.borua.dev";
 const siteName = "Free QR Code Generator";
 const siteDescription =
   "Create free QR codes for links and text instantly. No signup, no ads, no redirects, and downloadable PNG QR codes.";
-const gaMeasurementId = "G-7JN1R6CGLW";
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -106,18 +106,22 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gaMeasurementId}');
-          `}
-        </Script>
+        {gaMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}');
+              `}
+            </Script>
+          </>
+        )}
         <Script
           id="structured-data"
           type="application/ld+json"
