@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { type FormEvent, useState } from "react";
 import {
   AlertCircle,
@@ -144,11 +145,14 @@ export default function App() {
           {generatedData ? (
             <div className="flex flex-col items-center space-y-6 w-full animate-in zoom-in-95 duration-500">
               <div className="p-4 bg-white rounded-2xl shadow-lg ring-1 ring-slate-900/5">
-                <img
+                <Image
                   src={`https://quickchart.io/qr?text=${encodeURIComponent(generatedData)}&margin=1&size=300`}
                   alt="Generated QR Code"
-                  className="w-64 h-64 object-contain"
+                  width={256}
+                  height={256}
+                  className="object-contain"
                   crossOrigin="anonymous"
+                  unoptimized
                 />
               </div>
 

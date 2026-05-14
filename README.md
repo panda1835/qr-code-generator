@@ -1,5 +1,7 @@
 # Free QR Code Generator
 
+Live site: [qrcode.borua.dev](https://qrcode.borua.dev)
+
 I got tired of QR code generators that hide basic features behind paid plans, signups, ads, tracking pages, or unnecessary requirements.
 
 So I made this one.
