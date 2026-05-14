@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   title: {
-    default: `${siteName} | qrcode.borua.dev`,
+    default: `${siteName}`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
